@@ -54,7 +54,7 @@ function ProjectDetails({ Details, onCloseAdding, onAdding, Index }) {
           <Button
             variant="ghost"
             onClick={() => {
-              if (enteredText === " " || enteredText === "" || enteredText.trim.length === 0 ) {
+              if (enteredText === " " || enteredText === "") {
                 toast("Invalid Input", {
                   description: "Opps... looks like you forgot to enter a value",
                   action: {

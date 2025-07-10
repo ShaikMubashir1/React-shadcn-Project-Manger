@@ -8,6 +8,11 @@ function App() {
   const [isAdding, setIsAdding] = useState(false);
   const [showTask, setShowTask] = useState(false);
 
+  const str  = " "+" "+" "+" King "+" "+" "+" "
+  const strt = str.trim.length
+
+  console.log(strt)
+
   const TaskLists = [
     {
       id: "t1",
