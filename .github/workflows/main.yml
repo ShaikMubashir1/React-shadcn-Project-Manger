@@ -18,10 +18,9 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      # (Optional) Create a .env for build-time vars
-      # - name: 📄 Create .env from GitHub Secrets
-      #   run: |
-      #     echo "REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }}" >> .env
+      # (Temporary, only if you can't commit react-icons)
+      # - name: 📦 Ensure missing deps
+      #   run: npm install react-icons
 
       - name: 🏗 Build project
         run: |
@@ -36,5 +35,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          local-dir: build/         # ⬅️ For Vite use: dist/
-          # server-dir: /public_html/  # ⬅️ Set if your host needs a specific remote path
+          local-dir: dist/        # Vite output
+          # server-dir: /public_html/  # set if needed
