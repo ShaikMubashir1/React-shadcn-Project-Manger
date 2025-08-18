@@ -5,7 +5,6 @@ on:
 
 jobs:
   deploy:
-    name: 🎉 Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -18,21 +17,28 @@ jobs:
           node-version: '22'
           cache: 'npm'
 
-      # (Temporary, only if you can't commit react-icons)
-      # - name: 📦 Ensure missing deps
-      #   run: npm install react-icons
-
-      - name: 🏗 Build project
+      - name: 🏗 Build (Vite)
         run: |
           npm ci
           npm run build
 
-      - name: 📂 Deploy via FTP
+      # Helps prove whether DNS is the problem
+      - name: 🔎 Preflight DNS/ports
+        run: |
+          echo "Host: ${{ secrets.FTP_SERVER }}"
+          getent hosts "${{ secrets.FTP_SERVER }}" || (echo "DNS failed"; exit 1)
+          command -v nc >/dev/null && {
+            nc -vz "${{ secrets.FTP_SERVER }}" 21 || true
+            nc -vz "${{ secrets.FTP_SERVER }}" 990 || true
+          }
+
+      - name: 📂 Deploy via FTPS (Explicit 21)
         uses: SamKirkland/FTP-Deploy-Action@4.3.3
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server:   ${{ secrets.FTP_SERVER }}      # hostname or IP
+          username: ${{ secrets.FTP_USERNAME }}    # mubashir@shoaib.standardtouch.com
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           port: 21
-          local-dir: dist/
+          local-dir: dist/                         # Vite output
+          # server-dir: /public_html/              # uncomment if needed
