@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { FaPlus } from "react-icons/fa";
+// src/component/SideBar.jsx
+import { FaHome, FaUser } from "react-icons/fa";
 
 function SideBar({ onAdding, onShow, Details, onSelect, onCloseAdding }) {
   const $Btn =
