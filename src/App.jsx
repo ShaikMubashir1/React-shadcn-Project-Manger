@@ -24,6 +24,10 @@ function App() {
           id: "e1",
           $Text: "Will be completing todo app today",
         },
+        {
+          id: "e1",
+          $Text: "Learning the core concepts of React today",
+        },
       ],
     },
   ];
