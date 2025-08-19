@@ -25,7 +25,7 @@ function App() {
           $Text: "Will be completing todo app today",
         },
         {
-          id: "e1",
+          id: "e2",
           $Text: "Learning the core concepts of React today",
         },
       ],
