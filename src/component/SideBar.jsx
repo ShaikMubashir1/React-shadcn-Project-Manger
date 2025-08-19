@@ -13,7 +13,7 @@ function SideBar({ onAdding, onShow, Details, onSelect, onCloseAdding }) {
 
   return (
     <div>
-      <div className=" bg-black flex flex-col gap-5 md:rounded-lg p-7 pt-10 h-full md:h-full md:fixed md:w-80">
+      <div className=" bg-stone-800 flex flex-col gap-5 md:rounded-lg p-7 pt-10 h-full md:h-full md:fixed md:w-80">
         <h1 className=" uppercase text-white font-bold text-2xl">
           Your Projects
         </h1>
